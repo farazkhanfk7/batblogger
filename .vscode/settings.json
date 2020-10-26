@@ -1,0 +1,16 @@
+{
+    "python.pythonPath": "/home/faraz/.virtualenvs/batblog/bin/python",
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ]
+}
+
+// {
+//     "python.pythonPath": "/home/faraz/.virtualenvs/batblog/bin/python",
+//     "python.autoComplete.extraPaths": ["/home/faraz/dev/batblog"],
+//     "python.linting.pylintArgs": [
+//         "--load-plugins",
+//         "pylint-flask"
+//     ]
+// }

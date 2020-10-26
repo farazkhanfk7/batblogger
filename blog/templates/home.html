@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Blogs{% endblock%}
+
+{% block content %}
+
+<div class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category,message in messages %}
+<div class="alert alert-{{category}} my-3"  role="alert">
+    {{message}}
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="mt-3 jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h1 class="display-4">Blogs</h1>
+    </div>
+  </div>
+<br>
+{% for post in posts %}
+<div class="card my-2">
+    <div class="card-header">
+      {{post.title}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{post.author}} on {{post.date_posted}}</h5>
+      <p class="card-text">{{post.content}}</p>
+      <a href="#" class="btn btn-primary">Read full blog</a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}
