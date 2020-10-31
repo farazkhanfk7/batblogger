@@ -3,8 +3,8 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<div class="container card my-4 mx-auto col-10">
-    <div class="container p-4">
+<div class="container my-4 mx-auto col-10">
+    <div style="margin-bottom:150px;" class="card container p-4">
     <form method="POST" action="">
         {{form.hidden_tag()}}
         <div class="form-group">
@@ -70,10 +70,10 @@
             </div>
         </div>
     </form>
-    </div>
     <div class="border-top pt-3 text-muted p-2">
-            Already have an account? <a href="{{ url_for('login')}}" class="ml-2">Login Here</a>
+        Already have an account? <a href="{{url_for('login')}}" class="ml-2">Login Here</a>
     </div>
+    </div>  
 </div>
 
 {% endblock %}

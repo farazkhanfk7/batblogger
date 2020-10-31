@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container">
+<div style="margin-bottom:200px;" class="container">
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category,message in messages %}
@@ -20,17 +20,52 @@
     </div>
   </div>
 <br>
-{% for post in posts %}
+<!--for pagination-->
+<div class="my-auto">
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+{% if page_num %}
+  {% if posts.page == page_num %}
+  <a class="btn btn-info mb-4" href="{{url_for('blog',page=page_num)}}">{{page_num}}</a>
+  {% else %}
+  <a class="btn btn-outline-info mb-4" href="{{url_for('blog',page=page_num)}}">{{page_num}}</a>
+  {% endif %}
+{% else %}
+...
+{% endif %}
+{% endfor %}
+</div>
+<!--end pagination -->
+
+<!--list of blogs-->
+{% for post in posts.items %}
 <div class="card my-2">
     <div class="card-header">
       {{post.title}}
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{post.author}} on {{post.date_posted}}</h5>
-      <p class="card-text">{{post.content}}</p>
-      <a href="#" class="btn btn-primary">Read full blog</a>
+      <h5 class="card-text">{{post.content[:300]|markdown}}....</h5>
+      <div class="row mx-1 my-3">
+        <img class="rounded-circle mr-1" src="{{ url_for('static',filename='profilepics/' + post.author.image_file)}}" width="30" height="30">
+        <h6 class="card-title ml-1"><a href="{{url_for('user',username=post.author.username)}}">{{post.author.username}}</a> on {{post.date_posted.strftime('%Y-%m-%d')}}</h6>
+      </div> 
+      <a href="{{url_for('post',id=post.id)}}" class="btn btn-primary">Read full blog</a>
     </div>
   </div>
 {% endfor %}
+<!--for pagination-->
+<div class="my-auto">
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+{% if page_num %}
+  {% if posts.page == page_num %}
+  <a class="btn btn-info mb-4" href="{{url_for('blog',page=page_num)}}">{{page_num}}</a>
+  {% else %}
+  <a class="btn btn-outline-info mb-4" href="{{url_for('blog',page=page_num)}}">{{page_num}}</a>
+  {% endif %}
+{% else %}
+...
+{% endif %}
+{% endfor %}
+</div>
+<!--end pagination -->
 </div>
 {% endblock content %}
