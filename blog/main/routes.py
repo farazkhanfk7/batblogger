@@ -14,6 +14,10 @@ def blog():
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page,per_page=4)
     return render_template('home.html',posts=posts)
 
+@main.route('/about')
+def about():
+    return "<h3>Contact : farazkhan138@gmail.com<h3>"
+
 @main.route('/user/<string:username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
