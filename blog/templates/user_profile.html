@@ -36,8 +36,8 @@
                       </div>
                 </div>
                 <div class="col-12"><hr></div>
-                <div class="container p-4">
-                
+                <div class="container p-4 text-center">
+                   <h2>BLOGS BY {{user.username.upper()}}</h2>
                 </div>
             </div>
       </div>
@@ -55,7 +55,7 @@
         <img class="rounded-circle mr-1" src="{{ url_for('static',filename='profilepics/' + post.author.image_file)}}" width="30" height="30">
         <h6 class="card-title ml-1">{{post.author.username}} on {{post.date_posted.strftime('%Y-%m-%d')}}</h6>
       </div> 
-      <a href="{{url_for('post',id=post.id)}}" class="btn btn-primary">Read full blog</a>
+      <a href="{{url_for('posts.post',id=post.id)}}" class="btn btn-primary">Read full blog</a>
     </div>
   </div>
 {% endfor %}

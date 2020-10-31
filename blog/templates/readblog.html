@@ -19,7 +19,7 @@
         <h3 class="d-inline">{{post.title}}</h3>
         {% if post.author == current_user %}
          <div class="d-inline float-right">
-             <a class="ml-2 btn btn-secondary btn-sm" href="{{url_for('update_post',id=post.id)}}">Edit</a>
+             <a class="ml-2 btn btn-secondary btn-sm" href="{{url_for('posts.update_post',id=post.id)}}">Edit</a>
              <button class="ml-2 btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#deleteModal">Delete</button>
          </div>
         {% endif %}
@@ -49,7 +49,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <form action="{{url_for('delete',id=post.id)}}" method="POST">
+          <form action="{{url_for('posts.delete',id=post.id)}}" method="POST">
               <input class="btn btn-danger" type="submit" value="delete">
           </form>
         </div>
