@@ -10,6 +10,10 @@ from blog.config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# using config here for testing only 
+app.config['SECRET_KEY'] = '64529050a317171fa534714b75b55b03'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+# otherwise use config.from_object to get environment vars
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
