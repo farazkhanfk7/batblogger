@@ -1,0 +1,11 @@
+language: python
+os: linux
+dist:
+  - bionic
+  - xenial
+python:
+  - 3.6.9
+install:
+  - pip install -r requirements.txt
+script:
+  - python tests.py
